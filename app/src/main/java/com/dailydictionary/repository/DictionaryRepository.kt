@@ -7,7 +7,7 @@ import com.dailydictionary.room.DictionaryRoomDatabase
 import com.dailydictionary.room.dao.DictionaryDao
 import com.dailydictionary.room.entity.Dictionary
 
-abstract class DictionaryRepository(private var application: Application) {
+class DictionaryRepository(application: Application) {
 
     private var mDictionaryDao: DictionaryDao =
         DictionaryRoomDatabase.getDatabaseInstance(application).dictionaryDao()

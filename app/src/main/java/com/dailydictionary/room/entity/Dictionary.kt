@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 class Dictionary {
     @PrimaryKey
     @NonNull
-    private val word: String? = null
-    private val meaning: String? = null
-    private val sentence: String? = null
+    var word: String? = null
+    val meaning: String? = null
+    val sentence: String? = null
 }
