@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dailydictionary.R
-import com.dailydictionary.room.entity.Dictionary
+import com.dailydictionary.db.entity.Dictionary
 
 class WordsFragment : Fragment() {
 

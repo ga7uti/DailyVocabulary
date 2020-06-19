@@ -1,4 +1,4 @@
-package com.dailydictionary.room.entity
+package com.dailydictionary.db.entity
 
 import androidx.annotation.NonNull
 import androidx.room.Entity

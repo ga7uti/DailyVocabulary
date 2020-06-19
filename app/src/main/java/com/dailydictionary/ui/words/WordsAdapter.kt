@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dailydictionary.R
-import com.dailydictionary.room.entity.Dictionary
+import com.dailydictionary.db.entity.Dictionary
 
 class WordsAdapter() :
     RecyclerView.Adapter<WordsAdapter.WordViewHolder>() {

@@ -3,9 +3,9 @@ package com.dailydictionary.repository
 import android.app.Application
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
-import com.dailydictionary.room.DictionaryRoomDatabase
-import com.dailydictionary.room.dao.DictionaryDao
-import com.dailydictionary.room.entity.Dictionary
+import com.dailydictionary.db.DictionaryRoomDatabase
+import com.dailydictionary.db.dao.DictionaryDao
+import com.dailydictionary.db.entity.Dictionary
 
 class DictionaryRepository(application: Application) {
 

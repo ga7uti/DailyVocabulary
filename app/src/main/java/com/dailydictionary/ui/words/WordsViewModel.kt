@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.dailydictionary.repository.DictionaryRepository
-import com.dailydictionary.room.entity.Dictionary
+import com.dailydictionary.db.entity.Dictionary
 
 class WordsViewModel(application: Application) : AndroidViewModel(application) {
     private val mDictionaryRepository: DictionaryRepository = DictionaryRepository(application)

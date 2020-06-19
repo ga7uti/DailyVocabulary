@@ -1,4 +1,4 @@
-package com.dailydictionary.room
+package com.dailydictionary.db
 
 import android.content.Context
 import android.os.AsyncTask
@@ -6,8 +6,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.dailydictionary.room.dao.DictionaryDao
-import com.dailydictionary.room.entity.Dictionary
+import com.dailydictionary.db.dao.DictionaryDao
+import com.dailydictionary.db.entity.Dictionary
 
 
 @Database(entities = [Dictionary::class], version = 1, exportSchema = false)

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DailyVocabulary</string>
+    <string name="add_new_word_fragment">AddWord</string>
 </resources>
