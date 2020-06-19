@@ -1,4 +1,4 @@
-package com.dailydictionary.ui.main
+package com.dailydictionary.ui.words
 
 import android.view.LayoutInflater
 import android.view.View

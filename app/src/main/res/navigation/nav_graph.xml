@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/wordsFragment">
+    <fragment
+        android:id="@+id/wordsFragment"
+        android:name="com.dailydictionary.ui.words.WordsFragment"
+        android:label="words_fragment"
+        tools:layout="@layout/words_fragment">
+        <action
+            android:id="@+id/action_wordsFragment_to_addWordFragment"
+            app:destination="@id/addWordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addWordFragment"
+        android:name="com.dailydictionary.ui.addNewWord.AddWordFragment"
+        android:label="add_word_fragment"
+        tools:layout="@layout/add_word_fragment" />
+</navigation>
