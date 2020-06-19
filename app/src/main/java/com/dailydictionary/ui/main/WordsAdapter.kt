@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dailydictionary.R
 import com.dailydictionary.room.entity.Dictionary
 
-class WordsAdapter(private val mAllWords: List<Dictionary>) :
+class WordsAdapter() :
     RecyclerView.Adapter<WordsAdapter.WordViewHolder>() {
+
+    private var mAllWords: List<Dictionary> = ArrayList<Dictionary>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
         return WordViewHolder(
@@ -29,6 +31,11 @@ class WordsAdapter(private val mAllWords: List<Dictionary>) :
         fun bind(dictionary: Dictionary) {
             itemView.findViewById<TextView>(R.id.textView_words).text = dictionary.word;
         }
+    }
+
+    fun setAllWords(words: List<Dictionary>) {
+        mAllWords = words;
+        notifyDataSetChanged()
     }
 
 }
