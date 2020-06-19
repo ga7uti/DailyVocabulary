@@ -1,4 +1,4 @@
-package com.wordybuddy
+package com.dailydictionary
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

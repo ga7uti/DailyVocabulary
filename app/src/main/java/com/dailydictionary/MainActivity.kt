@@ -1,4 +1,4 @@
-package com.wordybuddy
+package com.dailydictionary
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

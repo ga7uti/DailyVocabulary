@@ -1,4 +1,4 @@
-package com.wordybuddy
+package com.dailydictionary
 
 import org.junit.Test
 
