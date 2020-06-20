@@ -13,6 +13,9 @@ interface DictionaryDao {
     @Update
     fun update(word: Dictionary)
 
+    @Delete
+    fun delete(word: Dictionary)
+
     @Query("DELETE FROM dictionary_tbl")
     fun deleteAll()
 

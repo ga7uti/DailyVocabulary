@@ -48,6 +48,10 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
         notifyDataSetChanged()
     }
 
+    fun removeData() {
+        notifyDataSetChanged()
+    }
+
     private fun showAlertDialog(mContext: Context, word: Dictionary) {
         val dialog = Dialog(mContext)
         dialog.setContentView(R.layout.layout_alert_word)

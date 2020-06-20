@@ -21,4 +21,8 @@ class WordsViewModel(application: Application) : AndroidViewModel(application) {
     fun update(word: Dictionary) {
         mDictionaryRepository.update(word)
     }
+
+    fun delete(word: Dictionary) {
+        mDictionaryRepository.delete(word)
+    }
 }

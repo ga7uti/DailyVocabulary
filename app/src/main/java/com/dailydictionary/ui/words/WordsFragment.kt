@@ -62,7 +62,6 @@ class WordsFragment : Fragment(), OnDialogClickListener {
     }
 
     override fun edit(word: Dictionary) {
-        context?.let { AlertUtils.showToast(it, "Edit") }
         val bundle = Bundle()
         bundle.putParcelable("word_data", word)
         bundle.putBoolean("edit", true)
@@ -71,6 +70,7 @@ class WordsFragment : Fragment(), OnDialogClickListener {
     }
 
     override fun delete(word: Dictionary) {
-        context?.let { AlertUtils.showToast(it, "Delete") }
+        viewModel.delete(word)
+        adapter.removeData()
     }
 }

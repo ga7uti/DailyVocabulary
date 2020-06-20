@@ -32,4 +32,11 @@ class DictionaryRepository(application: Application) {
             mDictionaryDao.update(word)
         }
     }
+
+
+    fun delete(word: Dictionary) {
+        AsyncTask.execute {
+            mDictionaryDao.delete(word)
+        }
+    }
 }
