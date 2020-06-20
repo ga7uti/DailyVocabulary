@@ -1,5 +1,6 @@
 package com.dailydictionary.ui.words
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,17 +16,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dailydictionary.R
 import com.dailydictionary.db.entity.Dictionary
+import com.dailydictionary.ui.activity.MainActivity
 import com.dailydictionary.utils.AlertUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class WordsFragment : Fragment(), OnDialogClickListener {
+class WordsFragment : Fragment(), OnDialogClickListener, OnPassFilterQuery {
 
     companion object {
         fun newInstance() = WordsFragment()
     }
 
     private lateinit var viewModel: WordsViewModel
-    private val adapter = WordsAdapter(this)
+    val adapter = WordsAdapter(this)
     private lateinit var mView: View
 
 
@@ -41,7 +43,7 @@ class WordsFragment : Fragment(), OnDialogClickListener {
         viewModel = ViewModelProviders.of(this).get(WordsViewModel::class.java)
         viewModel.mAllWords
             .observe(viewLifecycleOwner,
-                Observer<List<Dictionary>> { words -> // Update the cached copy of the words in the adapter.
+                Observer<List<Dictionary>> { words ->
                     adapter.setAllWords(words)
                 })
 
@@ -72,5 +74,15 @@ class WordsFragment : Fragment(), OnDialogClickListener {
     override fun delete(word: Dictionary) {
         viewModel.delete(word)
         adapter.removeData()
+    }
+
+    override fun onAttach(activity: Activity) {
+        super.onAttach(activity)
+        (activity as MainActivity).onPassFilterQuery = this
+
+    }
+
+    override fun passQuery(query: String) {
+        adapter.filter.filter(query)
     }
 }

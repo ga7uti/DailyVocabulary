@@ -7,13 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dailydictionary.R
 import com.dailydictionary.db.entity.Dictionary
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 class WordsAdapter(private var listener: OnDialogClickListener) :
-    RecyclerView.Adapter<WordsAdapter.WordViewHolder>() {
+    RecyclerView.Adapter<WordsAdapter.WordViewHolder>(), Filterable {
 
     private var mAllWords: List<Dictionary> = ArrayList<Dictionary>()
     private lateinit var mContext: Context
@@ -80,4 +85,32 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
         dialog.show()
     }
 
+    override fun getFilter(): Filter {
+        return wordsFilter
+    }
+
+    private val wordsFilter = object : Filter() {
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
+            val filteredList: MutableList<Dictionary> = ArrayList()
+            if (constraint == null || constraint.isEmpty()) {
+                filteredList.addAll(mAllWords)
+            } else {
+                val filterPattern: String = constraint.toString().toLowerCase(Locale.ROOT).trim()
+                for (item in mAllWords) {
+                    if (item.word?.toLowerCase(Locale.ROOT)?.contains(filterPattern)!!) {
+                        filteredList.add(item)
+                    }
+                }
+            }
+            val results = FilterResults()
+            results.values = filteredList
+            return results
+        }
+
+        @Suppress("UNCHECKED_CAST")
+        override fun publishResults(constraint: CharSequence?, p1: FilterResults?) {
+            mAllWords = p1?.values as ArrayList<Dictionary>
+            notifyDataSetChanged()
+        }
+    }
 }
