@@ -4,13 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dailydictionary.R
 import com.dailydictionary.db.entity.Dictionary
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class WordsFragment : Fragment() {
 
@@ -45,6 +50,10 @@ class WordsFragment : Fragment() {
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerview)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
+
+        view.findViewById<FloatingActionButton>(R.id.fab_add).setOnClickListener(View.OnClickListener {
+            Navigation.findNavController(view).navigate(R.id.addWordFragment)
+        })
 
     }
 }

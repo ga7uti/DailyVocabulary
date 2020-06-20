@@ -1,13 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.addNewWord.AddWordFragment">
+    android:background="@color/colorScreenBackground"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+    <EditText
+        android:id="@+id/et_add_word_fragment_word"
+        style="@style/text_view_style"
+        android:hint="@string/hint_word"
+        android:textColorHint="@color/white"
+        android:importantForAutofill="no"
+        android:inputType="textAutoComplete" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/et_add_word_fragment_meaning"
+        style="@style/text_view_style"
+        android:hint="@string/hint_meaning"
+        android:textColorHint="@color/white"
+        android:importantForAutofill="no"
+        android:inputType="textAutoComplete" />
+
+    <EditText
+        android:id="@+id/et_add_word_fragment_sentence"
+        style="@style/text_view_style"
+        android:hint="@string/hint_sentence"
+        android:textColorHint="@color/white"
+        android:importantForAutofill="no"
+        android:inputType="textAutoComplete" />
+
+    <Button
+        android:id="@+id/button_save"
+        style="@style/button_style"
+        android:text="@string/button_save" />
+</LinearLayout>
