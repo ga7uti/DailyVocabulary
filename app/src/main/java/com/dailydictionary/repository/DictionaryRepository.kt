@@ -26,4 +26,10 @@ class DictionaryRepository(application: Application) {
             mDictionaryDao.insert(word)
         }
     }
+
+    fun update(word: Dictionary) {
+        AsyncTask.execute {
+            mDictionaryDao.update(word)
+        }
+    }
 }

@@ -26,6 +26,7 @@ class WordsFragment : Fragment(), OnDialogClickListener {
 
     private lateinit var viewModel: WordsViewModel
     private val adapter = WordsAdapter(this)
+    private lateinit var mView: View
 
 
     override fun onCreateView(
@@ -48,19 +49,25 @@ class WordsFragment : Fragment(), OnDialogClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mView = view
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerview)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         view.findViewById<FloatingActionButton>(R.id.fab_add)
             .setOnClickListener(View.OnClickListener {
-                Navigation.findNavController(view).navigate(R.id.addWordFragment)
+                Navigation.findNavController(mView).navigate(R.id.addWordFragment)
             })
 
     }
 
     override fun edit(word: Dictionary) {
         context?.let { AlertUtils.showToast(it, "Edit") }
+        val bundle = Bundle()
+        bundle.putParcelable("word_data", word)
+        bundle.putBoolean("edit", true)
+        Navigation.findNavController(mView).navigate(R.id.addWordFragment, bundle)
+
     }
 
     override fun delete(word: Dictionary) {

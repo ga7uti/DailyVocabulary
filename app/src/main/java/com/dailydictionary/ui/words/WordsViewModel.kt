@@ -17,4 +17,8 @@ class WordsViewModel(application: Application) : AndroidViewModel(application) {
     fun insert(word: Dictionary) {
         mDictionaryRepository.insert(word)
     }
+
+    fun update(word: Dictionary) {
+        mDictionaryRepository.update(word)
+    }
 }

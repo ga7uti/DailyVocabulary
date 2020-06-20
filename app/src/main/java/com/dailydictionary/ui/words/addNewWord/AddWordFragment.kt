@@ -27,7 +27,15 @@ class AddWordFragment : Fragment() {
     private lateinit var mEtMeaning: EditText
     private lateinit var mEtSentence: EditText
     private var mWord: Dictionary? = null
+    private var isEditable: Boolean = false
+    private lateinit var mView: View
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mWord = arguments?.getParcelable("word_data")
+        isEditable = arguments?.getBoolean("edit") ?: false
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,8 +51,9 @@ class AddWordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        mView = view
         setUI(view)
+        mWord?.let { setData(it) }
     }
 
     private fun setUI(view: View) {
@@ -54,15 +63,34 @@ class AddWordFragment : Fragment() {
 
         view.findViewById<Button>(R.id.btn_add_fragment_save)
             .setOnClickListener(View.OnClickListener {
-                mWord = validate()
-                if (mWord != null) {
-                    viewModel.insert(mWord!!)
-                    val navigation = Navigation.findNavController(view)
-                    Utils.hideKeyBoard(activity)
-                    navigation.popBackStack(R.id.wordsFragment, true)
-                    navigation.navigate(R.id.wordsFragment)
-                }
+                val word = validate()
+                if (!isEditable)
+                    word?.let { it1 -> insertWord(it1) }
+                else
+                    word?.let { it1 -> updateWord(it1) }
             })
+    }
+
+    private fun insertWord(word: Dictionary) {
+        viewModel.insert(word)
+        val navigation = Navigation.findNavController(mView)
+        Utils.hideKeyBoard(activity)
+        navigation.popBackStack(R.id.wordsFragment, true)
+        navigation.navigate(R.id.wordsFragment)
+    }
+
+    private fun updateWord(word: Dictionary) {
+        viewModel.update(word)
+        val navigation = Navigation.findNavController(mView)
+        Utils.hideKeyBoard(activity)
+        navigation.popBackStack(R.id.wordsFragment, true)
+        navigation.navigate(R.id.wordsFragment)
+    }
+
+    private fun setData(word: Dictionary) {
+        mEtWord.setText(word.word)
+        mEtMeaning.setText(word.meaning)
+        mEtSentence.setText(word.sentence)
     }
 
     private fun validate(): Dictionary? {

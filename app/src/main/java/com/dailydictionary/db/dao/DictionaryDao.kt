@@ -7,7 +7,7 @@ import com.dailydictionary.db.entity.Dictionary
 @Dao
 interface DictionaryDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(word: Dictionary)
 
     @Update
@@ -17,6 +17,6 @@ interface DictionaryDao {
     fun deleteAll()
 
     @Query("SELECT * from dictionary_tbl ORDER BY word ASC")
-    fun getAllWords():LiveData<List<Dictionary>>
+    fun getAllWords(): LiveData<List<Dictionary>>
 
 }

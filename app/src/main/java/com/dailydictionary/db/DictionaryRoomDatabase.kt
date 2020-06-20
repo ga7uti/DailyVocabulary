@@ -34,7 +34,7 @@ abstract class DictionaryRoomDatabase : RoomDatabase() {
                     context.applicationContext,
                     DictionaryRoomDatabase::class.java,
                     "dictionary_db"
-                ).addCallback(sRoomDatabaseCallback).build()
+                ).build()
                 INSTANCE = instance
                 return instance
             }
