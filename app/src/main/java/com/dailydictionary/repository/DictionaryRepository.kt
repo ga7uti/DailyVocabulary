@@ -21,16 +21,9 @@ class DictionaryRepository(application: Application) {
         return mAllWords
     }
 
-    fun insert(dictionary: Dictionary) {
-        InsertAsyncTask(mDictionaryDao)
-    }
-
-    class InsertAsyncTask(private var dictionaryDao: DictionaryDao) :
-        AsyncTask<Dictionary, Unit, Unit>() {
-        override fun doInBackground(vararg p0: Dictionary?) {
-            p0[0]?.let { dictionaryDao.insert(it) };
+    fun insert(word: Dictionary) {
+        AsyncTask.execute {
+            mDictionaryDao.insert(word)
         }
     }
-
-
 }
