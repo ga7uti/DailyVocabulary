@@ -21,6 +21,7 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
     RecyclerView.Adapter<WordsAdapter.WordViewHolder>(), Filterable {
 
     private var mAllWords: List<Dictionary> = ArrayList<Dictionary>()
+    private var mFilteredWords: List<Dictionary> = ArrayList<Dictionary>()
     private lateinit var mContext: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
@@ -31,13 +32,13 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
     }
 
     override fun getItemCount(): Int {
-        return mAllWords.size
+        return mFilteredWords.size
     }
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
-        holder.bind(mAllWords[position])
+        holder.bind(mFilteredWords[position])
         holder.itemView.setOnClickListener(View.OnClickListener {
-            showAlertDialog(mContext, mAllWords[position])
+            showAlertDialog(mContext, mFilteredWords[position])
         })
 
     }
@@ -50,6 +51,7 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
 
     fun setAllWords(words: List<Dictionary>) {
         mAllWords = words;
+        mFilteredWords = words
         notifyDataSetChanged()
     }
 
@@ -109,7 +111,7 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
 
         @Suppress("UNCHECKED_CAST")
         override fun publishResults(constraint: CharSequence?, p1: FilterResults?) {
-            mAllWords = p1?.values as ArrayList<Dictionary>
+            mFilteredWords = p1?.values as ArrayList<Dictionary>
             notifyDataSetChanged()
         }
     }
