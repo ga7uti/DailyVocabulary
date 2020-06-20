@@ -1,4 +1,4 @@
-package com.dailydictionary.ui.addNewWord
+package com.dailydictionary.ui.words.addNewWord
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle

@@ -1,9 +1,8 @@
-package com.dailydictionary.ui
+package com.dailydictionary.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.service.autofill.UserData
 import androidx.appcompat.app.AppCompatActivity
 import com.dailydictionary.R
 

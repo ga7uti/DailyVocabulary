@@ -1,4 +1,4 @@
-package com.dailydictionary.ui
+package com.dailydictionary.ui.activity
 
 import android.content.Context
 import android.content.Intent

@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/addWordFragment"
-        android:name="com.dailydictionary.ui.addNewWord.AddWordFragment"
+        android:name="com.dailydictionary.ui.words.addNewWord.AddWordFragment"
         android:label="@string/add_new_word_fragment"
         tools:layout="@layout/add_word_fragment" />
 </navigation>
