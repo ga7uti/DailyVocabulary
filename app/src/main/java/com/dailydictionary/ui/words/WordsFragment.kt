@@ -15,16 +15,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dailydictionary.R
 import com.dailydictionary.db.entity.Dictionary
+import com.dailydictionary.utils.AlertUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class WordsFragment : Fragment() {
+class WordsFragment : Fragment(), OnDialogClickListener {
 
     companion object {
         fun newInstance() = WordsFragment()
     }
 
     private lateinit var viewModel: WordsViewModel
-    private val adapter = WordsAdapter()
+    private val adapter = WordsAdapter(this)
 
 
     override fun onCreateView(
@@ -51,9 +52,18 @@ class WordsFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        view.findViewById<FloatingActionButton>(R.id.fab_add).setOnClickListener(View.OnClickListener {
-            Navigation.findNavController(view).navigate(R.id.addWordFragment)
-        })
+        view.findViewById<FloatingActionButton>(R.id.fab_add)
+            .setOnClickListener(View.OnClickListener {
+                Navigation.findNavController(view).navigate(R.id.addWordFragment)
+            })
 
+    }
+
+    override fun edit(word: Dictionary) {
+        context?.let { AlertUtils.showToast(it, "Edit") }
+    }
+
+    override fun delete(word: Dictionary) {
+        context?.let { AlertUtils.showToast(it, "Delete") }
     }
 }

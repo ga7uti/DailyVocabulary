@@ -1,13 +1,16 @@
 <resources>
     <string name="app_name">DailyVocabulary</string>
-    <string name="add_new_word_fragment">AddWord</string>
 
-    <!--add new word-->
+    <!--words fragment-->
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+
+    <!--add new word fragment-->
+    <string name="add_new_word_fragment">AddWord</string>
     <string name="hint_word">Enter the word</string>
     <string name="hint_meaning">Enter the meaning</string>
     <string name="hint_sentence">Enter the sentence</string>
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Word not saved because it is empty.</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
