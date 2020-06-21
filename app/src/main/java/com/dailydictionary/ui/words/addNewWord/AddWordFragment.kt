@@ -9,9 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.dailydictionary.R
+import com.dailydictionary.ViewModelFactory
+import com.dailydictionary.db.DatabaseBuilder
+import com.dailydictionary.db.DatabaseHelperImpl
 import com.dailydictionary.db.entity.Dictionary
+import com.dailydictionary.model.DictionaryModel
 import com.dailydictionary.ui.words.WordsViewModel
 import com.dailydictionary.utils.AlertUtils
 import com.dailydictionary.utils.Utils
@@ -26,7 +31,7 @@ class AddWordFragment : Fragment() {
     private lateinit var mEtWord: EditText
     private lateinit var mEtMeaning: EditText
     private lateinit var mEtSentence: EditText
-    private var mWord: Dictionary? = null
+    private var mWord: DictionaryModel? = null
     private var isEditable: Boolean = false
     private lateinit var mView: View
 
@@ -44,15 +49,13 @@ class AddWordFragment : Fragment() {
         return inflater.inflate(R.layout.add_word_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(WordsViewModel::class.java)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mView = view
         setUI(view)
+        setupViewModel()
+
         mWord?.let { setData(it) }
     }
 
@@ -71,8 +74,23 @@ class AddWordFragment : Fragment() {
             })
     }
 
+    private fun setupViewModel() {
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelFactory(
+                DatabaseHelperImpl(DatabaseBuilder.getInstance(requireContext().applicationContext))
+            )
+        ).get(WordsViewModel::class.java)
+    }
+
+    private fun setData(word: DictionaryModel) {
+        mEtWord.setText(word.word)
+        mEtMeaning.setText(word.meaning)
+        mEtSentence.setText(word.sentence)
+    }
+
     private fun insertWord(word: Dictionary) {
-        viewModel.insert(word)
+        viewModel.insertWord(word)
         val navigation = Navigation.findNavController(mView)
         Utils.hideKeyBoard(activity)
         navigation.popBackStack(R.id.wordsFragment, true)
@@ -80,17 +98,11 @@ class AddWordFragment : Fragment() {
     }
 
     private fun updateWord(word: Dictionary) {
-        viewModel.update(word)
+        viewModel.updateWord(word)
         val navigation = Navigation.findNavController(mView)
         Utils.hideKeyBoard(activity)
         navigation.popBackStack(R.id.wordsFragment, true)
         navigation.navigate(R.id.wordsFragment)
-    }
-
-    private fun setData(word: Dictionary) {
-        mEtWord.setText(word.word)
-        mEtMeaning.setText(word.meaning)
-        mEtSentence.setText(word.sentence)
     }
 
     private fun validate(): Dictionary? {

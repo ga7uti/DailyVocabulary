@@ -99,7 +99,7 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
             } else {
                 val filterPattern: String = constraint.toString().toLowerCase(Locale.ROOT).trim()
                 for (item in mAllWords) {
-                    if (item.word?.toLowerCase(Locale.ROOT)?.contains(filterPattern)!!) {
+                    if (item.word.toLowerCase(Locale.ROOT).contains(filterPattern)) {
                         filteredList.add(item)
                     }
                 }

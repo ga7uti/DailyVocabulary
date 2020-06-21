@@ -24,9 +24,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        handleIntent(intent)
-
+        
         appBarConfiguration = AppBarConfiguration.Builder(
             R.id.wordsFragment
         ).build()
@@ -60,18 +58,5 @@ class MainActivity : AppCompatActivity() {
             }
         })
         return true
-    }
-
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        handleIntent(intent)
-    }
-
-    private fun handleIntent(intent: Intent) {
-
-        if (Intent.ACTION_SEARCH == intent.action) {
-            val query = intent.getStringExtra(SearchManager.QUERY)
-            AlertUtils.showToast(this, query.toString())
-        }
     }
 }

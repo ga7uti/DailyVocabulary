@@ -1,28 +1,54 @@
 package com.dailydictionary.ui.words
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import com.dailydictionary.repository.DictionaryRepository
+import androidx.lifecycle.*
+import com.dailydictionary.db.DatabaseHelper
 import com.dailydictionary.db.entity.Dictionary
+import com.dailydictionary.utils.Resource
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class WordsViewModel(application: Application) : AndroidViewModel(application) {
-    private val mDictionaryRepository: DictionaryRepository = DictionaryRepository(application)
-    val mAllWords: LiveData<List<Dictionary>>
+class WordsViewModel(private val dbHelper: DatabaseHelper) : ViewModel() {
+
+    private val mWords = MutableLiveData<Resource<List<Dictionary>>>()
 
     init {
-        mAllWords = mDictionaryRepository.getAllWords()
+        fetchWords()
     }
 
-    fun insert(word: Dictionary) {
-        mDictionaryRepository.insert(word)
+    private fun fetchWords() {
+        viewModelScope.launch(Dispatchers.IO) {
+            mWords.postValue(Resource.loading(null))
+            try {
+                val words = dbHelper.getWords()
+                if (words.isNotEmpty())
+                    mWords.postValue(Resource.success(words))
+                else
+                    mWords.postValue(Resource.error("No words added", null))
+            } catch (e: Exception) {
+                mWords.postValue(Resource.error("Something went wrong", null))
+            }
+        }
     }
 
-    fun update(word: Dictionary) {
-        mDictionaryRepository.update(word)
+    fun getWords(): LiveData<Resource<List<Dictionary>>> {
+        return mWords
     }
 
-    fun delete(word: Dictionary) {
-        mDictionaryRepository.delete(word)
+    fun insertWord(word: Dictionary) {
+        viewModelScope.launch(Dispatchers.IO) {
+            dbHelper.insert(word)
+        }
+    }
+
+    fun updateWord(word: Dictionary) {
+        viewModelScope.launch(Dispatchers.IO) {
+            dbHelper.update(word)
+        }
+    }
+
+    fun deleteWord(word: Dictionary) {
+        viewModelScope.launch (Dispatchers.IO){
+            dbHelper.delete(word)
+        }
     }
 }
