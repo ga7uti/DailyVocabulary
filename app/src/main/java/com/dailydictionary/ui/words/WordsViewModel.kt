@@ -16,7 +16,7 @@ class WordsViewModel(private val dbHelper: DatabaseHelper) : ViewModel() {
     }
 
     private fun fetchWords() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             mWords.postValue(Resource.loading(null))
             try {
                 val words = dbHelper.getWords()
@@ -35,19 +35,19 @@ class WordsViewModel(private val dbHelper: DatabaseHelper) : ViewModel() {
     }
 
     fun insertWord(word: Dictionary) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             dbHelper.insert(word)
         }
     }
 
     fun updateWord(word: Dictionary) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             dbHelper.update(word)
         }
     }
 
     fun deleteWord(word: Dictionary) {
-        viewModelScope.launch (Dispatchers.IO){
+        viewModelScope.launch {
             dbHelper.delete(word)
         }
     }

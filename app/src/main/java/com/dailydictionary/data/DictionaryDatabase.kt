@@ -6,7 +6,7 @@ import com.dailydictionary.data.dao.DictionaryDao
 import com.dailydictionary.data.entity.Dictionary
 
 
-@Database(entities = [Dictionary::class], version = 1)
+@Database(entities = [Dictionary::class], version = 1,exportSchema = false)
 abstract class DictionaryDatabase : RoomDatabase() {
 
     abstract fun dictionaryDao(): DictionaryDao

@@ -7,14 +7,14 @@ import com.dailydictionary.data.entity.Dictionary
 interface DictionaryDao {
 
     @Query("SELECT * from dictionary_tbl ORDER BY word ASC")
-    fun getWords(): List<Dictionary>
+    suspend fun getWords(): List<Dictionary>
 
     @Insert
-    fun insert(word: Dictionary)
+    suspend fun insert(word: Dictionary)
 
     @Update
-    fun update(word: Dictionary)
+    suspend fun update(word: Dictionary)
 
     @Delete
-    fun delete(word: Dictionary)
+    suspend fun delete(word: Dictionary)
 }
