@@ -12,9 +12,9 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dailydictionary.R
 import com.dailydictionary.ViewModelFactory
-import com.dailydictionary.db.DatabaseBuilder
-import com.dailydictionary.db.DatabaseHelperImpl
-import com.dailydictionary.db.entity.Dictionary
+import com.dailydictionary.data.DatabaseBuilder
+import com.dailydictionary.data.DatabaseHelperImpl
+import com.dailydictionary.data.entity.Dictionary
 import com.dailydictionary.model.DictionaryModel
 import com.dailydictionary.ui.activity.MainActivity
 import com.dailydictionary.utils.AlertUtils

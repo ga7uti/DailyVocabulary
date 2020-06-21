@@ -1,6 +1,6 @@
-package com.dailydictionary.db
+package com.dailydictionary.data
 
-import com.dailydictionary.db.entity.Dictionary
+import com.dailydictionary.data.entity.Dictionary
 
 interface DatabaseHelper {
 

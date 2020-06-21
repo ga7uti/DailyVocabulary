@@ -1,8 +1,8 @@
 package com.dailydictionary.ui.words
 
 import androidx.lifecycle.*
-import com.dailydictionary.db.DatabaseHelper
-import com.dailydictionary.db.entity.Dictionary
+import com.dailydictionary.data.DatabaseHelper
+import com.dailydictionary.data.entity.Dictionary
 import com.dailydictionary.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

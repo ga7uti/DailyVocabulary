@@ -1,6 +1,5 @@
 package com.dailydictionary.ui.words.addNewWord
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -13,9 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.dailydictionary.R
 import com.dailydictionary.ViewModelFactory
-import com.dailydictionary.db.DatabaseBuilder
-import com.dailydictionary.db.DatabaseHelperImpl
-import com.dailydictionary.db.entity.Dictionary
+import com.dailydictionary.data.DatabaseBuilder
+import com.dailydictionary.data.DatabaseHelperImpl
+import com.dailydictionary.data.entity.Dictionary
 import com.dailydictionary.model.DictionaryModel
 import com.dailydictionary.ui.words.WordsViewModel
 import com.dailydictionary.utils.AlertUtils

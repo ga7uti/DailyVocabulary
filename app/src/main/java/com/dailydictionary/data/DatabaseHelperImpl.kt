@@ -1,8 +1,6 @@
-package com.dailydictionary.db
+package com.dailydictionary.data
 
-import com.dailydictionary.db.DatabaseHelper
-import com.dailydictionary.db.DictionaryDatabase
-import com.dailydictionary.db.entity.Dictionary
+import com.dailydictionary.data.entity.Dictionary
 
 class DatabaseHelperImpl(private val dictionaryDatabase: DictionaryDatabase) :
     DatabaseHelper {

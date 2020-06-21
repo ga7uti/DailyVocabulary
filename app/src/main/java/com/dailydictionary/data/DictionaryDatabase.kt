@@ -1,9 +1,9 @@
-package com.dailydictionary.db
+package com.dailydictionary.data
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.dailydictionary.db.dao.DictionaryDao
-import com.dailydictionary.db.entity.Dictionary
+import com.dailydictionary.data.dao.DictionaryDao
+import com.dailydictionary.data.entity.Dictionary
 
 
 @Database(entities = [Dictionary::class], version = 1)

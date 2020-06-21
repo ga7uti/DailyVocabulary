@@ -12,7 +12,7 @@ import android.widget.Filterable
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dailydictionary.R
-import com.dailydictionary.db.entity.Dictionary
+import com.dailydictionary.data.entity.Dictionary
 import java.util.*
 import kotlin.collections.ArrayList
 

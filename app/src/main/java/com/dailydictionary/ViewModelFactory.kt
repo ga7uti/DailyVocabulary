@@ -2,7 +2,7 @@ package com.dailydictionary
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.dailydictionary.db.DatabaseHelper
+import com.dailydictionary.data.DatabaseHelper
 import com.dailydictionary.ui.words.WordsViewModel
 
 

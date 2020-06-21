@@ -1,7 +1,7 @@
-package com.dailydictionary.db.dao
+package com.dailydictionary.data.dao
 
 import androidx.room.*
-import com.dailydictionary.db.entity.Dictionary
+import com.dailydictionary.data.entity.Dictionary
 
 @Dao
 interface DictionaryDao {

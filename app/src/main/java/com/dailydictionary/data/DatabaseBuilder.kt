@@ -1,4 +1,4 @@
-package com.dailydictionary.db
+package com.dailydictionary.data
 
 import android.content.Context
 import androidx.room.Room

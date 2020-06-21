@@ -1,6 +1,5 @@
-package com.dailydictionary.db.entity
+package com.dailydictionary.data.entity
 
-import androidx.annotation.NonNull
 import androidx.room.*
 
 @Entity(tableName = "dictionary_tbl")

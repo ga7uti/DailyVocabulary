@@ -1,6 +1,6 @@
 package com.dailydictionary.ui.words
 
-import com.dailydictionary.db.entity.Dictionary
+import com.dailydictionary.data.entity.Dictionary
 
 interface OnDialogClickListener {
     fun edit(word: Dictionary)
