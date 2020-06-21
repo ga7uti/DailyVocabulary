@@ -15,7 +15,7 @@ import com.dailydictionary.ViewModelFactory
 import com.dailydictionary.data.DatabaseBuilder
 import com.dailydictionary.data.DatabaseHelperImpl
 import com.dailydictionary.data.entity.Dictionary
-import com.dailydictionary.model.DictionaryModel
+import com.dailydictionary.data.model.DictionaryModel
 import com.dailydictionary.ui.words.WordsViewModel
 import com.dailydictionary.utils.AlertUtils
 import com.dailydictionary.utils.Utils

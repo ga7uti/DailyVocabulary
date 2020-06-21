@@ -1,4 +1,4 @@
-package com.dailydictionary.model
+package com.dailydictionary.data.model
 
 import android.os.Parcel
 import android.os.Parcelable
