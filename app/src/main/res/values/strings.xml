@@ -14,4 +14,7 @@
     <string name="hint_sentence">Enter the sentence</string>
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Word not saved because it is empty.</string>
+
+    <!-- misc-->
+    <string name="cannot_edit">Not Editable</string>
 </resources>

@@ -1,14 +1,15 @@
 package com.dailydictionary.ui.addNewWord
 
 import android.os.Bundle
+import android.text.InputType
 import android.text.TextUtils
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.dailydictionary.R
 import com.dailydictionary.ViewModelFactory
@@ -16,9 +17,9 @@ import com.dailydictionary.data.DatabaseBuilder
 import com.dailydictionary.data.DatabaseHelperImpl
 import com.dailydictionary.data.entity.Dictionary
 import com.dailydictionary.data.model.DictionaryModel
-import com.dailydictionary.ui.words.WordsViewModel
 import com.dailydictionary.utils.AlertUtils
 import com.dailydictionary.utils.Utils
+import kotlinx.android.synthetic.main.add_word_fragment.*
 
 class AddWordFragment : Fragment() {
 
@@ -27,13 +28,9 @@ class AddWordFragment : Fragment() {
     }
 
     private lateinit var viewModel: AddNewWordViewModel
-    private lateinit var mEtWord: EditText
-    private lateinit var mEtMeaning: EditText
-    private lateinit var mEtSentence: EditText
     private var mWord: DictionaryModel? = null
     private var isEditable: Boolean = false
-    private lateinit var mView: View
-
+    private lateinit var navigation: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,26 +48,30 @@ class AddWordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mView = view
-        setUI(view)
         setupViewModel()
-
         mWord?.let { setData(it) }
-    }
 
-    private fun setUI(view: View) {
-        mEtWord = view.findViewById(R.id.et_add_word_fragment_word)
-        mEtMeaning = view.findViewById(R.id.et_add_word_fragment_meaning)
-        mEtSentence = view.findViewById(R.id.et_add_word_fragment_sentence)
+        //setting navigation
+        navigation = Navigation.findNavController(view)
 
+        //add btn click listener
         view.findViewById<Button>(R.id.btn_add_fragment_save)
             .setOnClickListener(View.OnClickListener {
                 val word = validate()
                 if (!isEditable)
-                    word?.let { it1 -> insertWord(it1) }
+                    word?.let { it1 ->
+                        viewModel.insertWord(it1)
+                    }
                 else
-                    word?.let { it1 -> updateWord(it1) }
+                    word?.let { it1 ->
+                        viewModel.updateWord(it1)
+                    }
+
+                Utils.hideKeyBoard(activity)
+                navigation.popBackStack(R.id.wordsFragment, true)
+                navigation.navigate(R.id.wordsFragment)
             })
+
     }
 
     private fun setupViewModel() {
@@ -83,35 +84,19 @@ class AddWordFragment : Fragment() {
     }
 
     private fun setData(word: DictionaryModel) {
-        mEtWord.setText(word.word)
-        mEtMeaning.setText(word.meaning)
-        mEtSentence.setText(word.sentence)
-    }
-
-    private fun insertWord(word: Dictionary) {
-        viewModel.insertWord(word)
-        val navigation = Navigation.findNavController(mView)
-        Utils.hideKeyBoard(activity)
-        navigation.popBackStack(R.id.wordsFragment, true)
-        navigation.navigate(R.id.wordsFragment)
-    }
-
-    private fun updateWord(word: Dictionary) {
-        viewModel.updateWord(word)
-        val navigation = Navigation.findNavController(mView)
-        Utils.hideKeyBoard(activity)
-        navigation.popBackStack(R.id.wordsFragment, true)
-        navigation.navigate(R.id.wordsFragment)
+        etAddWordFragmentWord.inputType = InputType.TYPE_NULL
+        etAddWordFragmentWord.setOnClickListener(View.OnClickListener {
+            context?.let { it1 -> AlertUtils.showToast(it1, R.string.cannot_edit) }
+        })
+        etAddWordFragmentWord.setText(word.word)
+        etAddWordFragmentMeaning.setText(word.meaning)
+        etAddWordFragmentSentence.setText(word.sentence)
     }
 
     private fun validate(): Dictionary? {
-        if (TextUtils.isEmpty(mEtWord.text)) {
+        if (TextUtils.isEmpty(etAddWordFragmentWord.text)) {
             context?.let { AlertUtils.showToast(it, R.string.hint_word) }
-            mEtWord.requestFocus()
-            return null
-        } else if (TextUtils.isEmpty(mEtMeaning.text)) {
-            context?.let { AlertUtils.showToast(it, R.string.hint_meaning) }
-            mEtMeaning.requestFocus()
+            etAddWordFragmentWord.requestFocus()
             return null
         }
         return getDetails()
@@ -119,9 +104,9 @@ class AddWordFragment : Fragment() {
 
     private fun getDetails(): Dictionary {
         return Dictionary(
-            mEtWord.text.toString(),
-            mEtMeaning.text.toString(),
-            mEtSentence.text.toString()
+            etAddWordFragmentWord.text.toString(),
+            etAddWordFragmentMeaning.text.toString(),
+            etAddWordFragmentSentence.text.toString()
         )
     }
 }

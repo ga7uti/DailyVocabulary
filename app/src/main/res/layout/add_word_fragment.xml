@@ -8,7 +8,7 @@
     android:padding="24dp">
 
     <EditText
-        android:id="@+id/et_add_word_fragment_word"
+        android:id="@+id/etAddWordFragmentWord"
         style="@style/text_view_style"
         android:hint="@string/hint_word"
         android:textColorHint="@color/white"
@@ -16,7 +16,7 @@
         android:inputType="textAutoComplete" />
 
     <EditText
-        android:id="@+id/et_add_word_fragment_meaning"
+        android:id="@+id/etAddWordFragmentMeaning"
         style="@style/text_view_style"
         android:hint="@string/hint_meaning"
         android:textColorHint="@color/white"
@@ -24,7 +24,7 @@
         android:inputType="textAutoComplete" />
 
     <EditText
-        android:id="@+id/et_add_word_fragment_sentence"
+        android:id="@+id/etAddWordFragmentSentence"
         style="@style/text_view_style"
         android:hint="@string/hint_sentence"
         android:textColorHint="@color/white"
