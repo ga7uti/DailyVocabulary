@@ -1,4 +1,4 @@
-package com.dailydictionary.ui.words.addNewWord
+package com.dailydictionary.ui.addNewWord
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -26,7 +26,7 @@ class AddWordFragment : Fragment() {
         fun newInstance() = AddWordFragment()
     }
 
-    private lateinit var viewModel: WordsViewModel
+    private lateinit var viewModel: AddNewWordViewModel
     private lateinit var mEtWord: EditText
     private lateinit var mEtMeaning: EditText
     private lateinit var mEtSentence: EditText
@@ -79,7 +79,7 @@ class AddWordFragment : Fragment() {
             ViewModelFactory(
                 DatabaseHelperImpl(DatabaseBuilder.getInstance(requireContext().applicationContext))
             )
-        ).get(WordsViewModel::class.java)
+        ).get(AddNewWordViewModel::class.java)
     }
 
     private fun setData(word: DictionaryModel) {

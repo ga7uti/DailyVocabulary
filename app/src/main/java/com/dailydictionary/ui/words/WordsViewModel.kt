@@ -34,21 +34,10 @@ class WordsViewModel(private val dbHelper: DatabaseHelper) : ViewModel() {
         return mWords
     }
 
-    fun insertWord(word: Dictionary) {
-        viewModelScope.launch {
-            dbHelper.insert(word)
-        }
-    }
-
-    fun updateWord(word: Dictionary) {
-        viewModelScope.launch {
-            dbHelper.update(word)
-        }
-    }
-
     fun deleteWord(word: Dictionary) {
         viewModelScope.launch {
             dbHelper.delete(word)
+            fetchWords()
         }
     }
 }
