@@ -1,10 +1,11 @@
 package com.dailydictionary.data
 
+import androidx.lifecycle.LiveData
 import com.dailydictionary.data.entity.Dictionary
 
 interface DatabaseHelper {
 
-    suspend fun getWords(): List<Dictionary>
+     fun getWords(): LiveData<List<Dictionary>>
 
     suspend fun insert(word: Dictionary)
 

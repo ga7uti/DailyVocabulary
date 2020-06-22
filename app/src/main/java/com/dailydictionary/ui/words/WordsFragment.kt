@@ -60,29 +60,7 @@ class WordsFragment : Fragment(), OnDialogClickListener, OnPassFilterQuery {
 
     private fun setupObserver() {
         viewModel.getWords().observe(viewLifecycleOwner, Observer {
-            when (it.status) {
-                Status.SUCCESS -> {
-                    progressBar.visibility = View.GONE
-                    it.data?.let { words -> adapter.setAllWords(words) }
-                    recyclerview.visibility = View.VISIBLE
-                }
-                Status.LOADING -> {
-                    progressBar.visibility = View.VISIBLE
-                    recyclerview.visibility = View.GONE
-                }
-                Status.ERROR -> {
-                    //Handle Error
-                    progressBar.visibility = View.GONE
-                    context?.let { it1 ->
-                        it.message?.let { it2 ->
-                            AlertUtils.showToast(
-                                it1,
-                                it2
-                            )
-                        }
-                    };
-                }
-            }
+            adapter.setAllWords(it)
         })
     }
 

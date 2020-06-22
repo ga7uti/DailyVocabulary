@@ -1,10 +1,11 @@
 package com.dailydictionary.data
 
+import androidx.lifecycle.LiveData
 import com.dailydictionary.data.entity.Dictionary
 
 class DatabaseHelperImpl(private val dictionaryDatabase: DictionaryDatabase) :
     DatabaseHelper {
-    override suspend fun getWords(): List<Dictionary> =
+    override fun getWords(): LiveData<List<Dictionary>> =
         dictionaryDatabase.dictionaryDao().getWords()
 
     override suspend fun insert(word: Dictionary) =

@@ -1,5 +1,6 @@
 package com.dailydictionary.data.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.dailydictionary.data.entity.Dictionary
 
@@ -7,7 +8,7 @@ import com.dailydictionary.data.entity.Dictionary
 interface DictionaryDao {
 
     @Query("SELECT * from dictionary_tbl ORDER BY word ASC")
-    suspend fun getWords(): List<Dictionary>
+    fun getWords(): LiveData<List<Dictionary>>
 
     @Insert
     suspend fun insert(word: Dictionary)
