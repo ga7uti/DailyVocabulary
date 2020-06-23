@@ -60,7 +60,11 @@ class WordsFragment : Fragment(), OnDialogClickListener, OnPassFilterQuery {
 
     private fun setupObserver() {
         viewModel.getWords().observe(viewLifecycleOwner, Observer {
-            adapter.setAllWords(it)
+            if (it.isNotEmpty()) {
+                adapter.setAllWords(it)
+            } else {
+                context?.let { it1 -> AlertUtils.showToast(it1, "No data added") }
+            }
         })
     }
 
@@ -84,7 +88,6 @@ class WordsFragment : Fragment(), OnDialogClickListener, OnPassFilterQuery {
 
     override fun delete(word: Dictionary) {
         viewModel.deleteWord(word)
-        adapter.removeData()
     }
 
     override fun onAttach(activity: Activity) {

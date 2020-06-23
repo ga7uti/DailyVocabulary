@@ -21,7 +21,7 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
     RecyclerView.Adapter<WordsAdapter.WordViewHolder>(), Filterable {
 
     private var mAllWords: List<Dictionary> = ArrayList<Dictionary>()
-    private var mFilteredWords: List<Dictionary> = ArrayList<Dictionary>()
+    private var mFilteredWords: MutableList<Dictionary> = ArrayList<Dictionary>()
     private lateinit var mContext: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
@@ -38,7 +38,7 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         holder.bind(mFilteredWords[position])
         holder.itemView.setOnClickListener(View.OnClickListener {
-            showAlertDialog(mContext, mFilteredWords[position])
+            showAlertDialog(mContext, mFilteredWords[position], position)
         })
 
     }
@@ -51,15 +51,11 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
 
     fun setAllWords(words: List<Dictionary>) {
         mAllWords = words;
-        mFilteredWords = words
+        mFilteredWords = words.toMutableList()
         notifyDataSetChanged()
     }
 
-    fun removeData() {
-        notifyDataSetChanged()
-    }
-
-    private fun showAlertDialog(mContext: Context, word: Dictionary) {
+    private fun showAlertDialog(mContext: Context, word: Dictionary, position: Int) {
         val dialog = Dialog(mContext)
         dialog.setContentView(R.layout.layout_alert_word)
 
@@ -78,6 +74,7 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
         dialog.findViewById<Button>(R.id.dialog_delete_btn)
             .setOnClickListener(View.OnClickListener {
                 listener.delete(word)
+                removeData(position)
                 dialog.dismiss()
             })
         dialog.findViewById<Button>(R.id.dialog_edit_btn).setOnClickListener(View.OnClickListener {
@@ -85,6 +82,12 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
             dialog.dismiss()
         })
         dialog.show()
+    }
+
+    private fun removeData(position: Int) {
+        mFilteredWords.removeAt(position)
+        mAllWords = mFilteredWords
+        notifyDataSetChanged()
     }
 
     override fun getFilter(): Filter {
