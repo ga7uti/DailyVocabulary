@@ -59,18 +59,20 @@ class AddWordFragment : Fragment() {
         view.findViewById<Button>(R.id.btn_add_fragment_save)
             .setOnClickListener {
                 val word = validate()
-                if (!isEditable)
-                    word?.let { it1 ->
-                        viewModel.insertWord(it1)
-                    }
-                else
-                    word?.let { it1 ->
-                        viewModel.updateWord(it1)
-                    }
+                if (word != null) {
+                    if (!isEditable)
+                        word.let { it1 ->
+                            viewModel.insertWord(it1)
+                        }
+                    else
+                        word.let { it1 ->
+                            viewModel.updateWord(it1)
+                        }
 
-                Utils.hideKeyBoard(activity)
-                navigation.popBackStack(R.id.wordsFragment, true)
-                navigation.navigate(R.id.wordsFragment)
+                    Utils.hideKeyBoard(activity)
+                    navigation.popBackStack(R.id.wordsFragment, true)
+                    navigation.navigate(R.id.wordsFragment)
+                }
             }
 
     }
@@ -86,7 +88,7 @@ class AddWordFragment : Fragment() {
 
     private fun setData(word: DictionaryModel) {
         etAddWordFragmentWord.inputType = InputType.TYPE_NULL
-        context?.let { ContextCompat.getColor(it,R.color.colorSecondaryText) }?.let {
+        context?.let { ContextCompat.getColor(it, R.color.colorSecondaryText) }?.let {
             etAddWordFragmentWord.setTextColor(
                 it
             )
@@ -101,8 +103,12 @@ class AddWordFragment : Fragment() {
 
     private fun validate(): Dictionary? {
         if (TextUtils.isEmpty(etAddWordFragmentWord.text)) {
-            context?.let { AlertUtils.showToast(it, R.string.hint_word) }
+            context?.let { AlertUtils.showToast(it, R.string.alert_hint_word) }
             etAddWordFragmentWord.requestFocus()
+            return null
+        } else if (TextUtils.isEmpty(etAddWordFragmentMeaning.text)) {
+            context?.let { AlertUtils.showToast(it, R.string.alert_hint_meaning) }
+            etAddWordFragmentMeaning.requestFocus()
             return null
         }
         return getDetails()

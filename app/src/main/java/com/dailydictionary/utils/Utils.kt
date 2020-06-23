@@ -20,9 +20,12 @@ class Utils {
         }
 
         fun capitalize(value: String?): String? {
-            val str = StringBuilder(value!!)
-            str.setCharAt(0, Character.toUpperCase(str[0]))
-            return str.toString()
+            if (value != null && value.isNotEmpty()) {
+                val str = StringBuilder(value)
+                str.setCharAt(0, Character.toUpperCase(str[0]))
+                return str.toString()
+            }
+            return ""
         }
     }
 }

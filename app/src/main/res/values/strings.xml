@@ -13,7 +13,9 @@
     <!--add new word fragment-->
     <string name="add_new_word_fragment">AddWord</string>
     <string name="hint_word">Enter the word</string>
+    <string name="alert_hint_word">Please enter the word</string>
     <string name="hint_meaning">Enter the meaning</string>
+    <string name="alert_hint_meaning">Please enter the meaning</string>
     <string name="hint_sentence">Enter the sentence</string>
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Word not saved because it is empty.</string>

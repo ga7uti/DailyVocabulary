@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.dailydictionary.R
 import com.dailydictionary.ViewModelFactory
 import com.dailydictionary.data.DatabaseBuilder
@@ -18,8 +19,8 @@ import com.dailydictionary.data.entity.Dictionary
 import com.dailydictionary.data.model.DictionaryModel
 import com.dailydictionary.ui.activity.MainActivity
 import com.dailydictionary.utils.AlertUtils
-import com.dailydictionary.utils.Status
 import kotlinx.android.synthetic.main.words_fragment.*
+
 
 class WordsFragment : Fragment(), OnDialogClickListener, OnPassFilterQuery {
 
@@ -55,7 +56,11 @@ class WordsFragment : Fragment(), OnDialogClickListener, OnPassFilterQuery {
         fab_add.setOnClickListener(View.OnClickListener {
             Navigation.findNavController(mView).navigate(R.id.addWordFragment)
         })
-
+        recyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0) fab_add.hide() else if (dy < 0) fab_add.show()
+            }
+        })
     }
 
     private fun setupObserver() {

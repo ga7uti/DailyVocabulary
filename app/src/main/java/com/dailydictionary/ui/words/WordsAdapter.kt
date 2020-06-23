@@ -78,7 +78,7 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
             itemView.findViewById<TextView>(R.id.tvWordFragmentMeaning).text =
                 itemView.context.getString(R.string.meaning_with_quotes, dictionary.meaning?.trim())
             itemView.findViewById<TextView>(R.id.tvWordFragmentSentence).text =
-                Utils.capitalize(dictionary.sentence?.trim());
+                dictionary.sentence?.let { Utils.capitalize(it.trim()) }
         }
     }
 
