@@ -2,32 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorScreenBackground"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp">
 
     <EditText
         android:id="@+id/etAddWordFragmentWord"
-        style="@style/text_view_style"
+        style="@style/edit_text_theme"
         android:hint="@string/hint_word"
-        android:textColorHint="@color/white"
         android:importantForAutofill="no"
         android:inputType="textAutoComplete" />
 
     <EditText
         android:id="@+id/etAddWordFragmentMeaning"
-        style="@style/text_view_style"
+        style="@style/edit_text_theme"
         android:hint="@string/hint_meaning"
-        android:textColorHint="@color/white"
         android:importantForAutofill="no"
         android:inputType="textAutoComplete" />
 
     <EditText
         android:id="@+id/etAddWordFragmentSentence"
-        style="@style/text_view_style"
+        style="@style/edit_text_theme"
         android:hint="@string/hint_sentence"
-        android:textColorHint="@color/white"
         android:importantForAutofill="no"
         android:inputType="textAutoComplete" />
 
