@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dailydictionary.R
 import com.dailydictionary.data.entity.Dictionary
+import com.dailydictionary.utils.Utils
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -37,17 +38,17 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         holder.bind(mFilteredWords[position])
-//        holder.itemView.setOnClickListener(View.OnClickListener {
-//            showAlertDialog(mContext, mFilteredWords[position], position)
-//        })
 
     }
 
     class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(dictionary: Dictionary) {
-            itemView.findViewById<TextView>(R.id.tvWordFragmentWord).text = dictionary.word;
-            itemView.findViewById<TextView>(R.id.tvWordFragmentMeaning).text = dictionary.meaning;
-            itemView.findViewById<TextView>(R.id.tvWordFragmentSentence).text = dictionary.sentence;
+            itemView.findViewById<TextView>(R.id.tvWordFragmentWord).text =
+                Utils.capitalize(dictionary.word)
+            itemView.findViewById<TextView>(R.id.tvWordFragmentMeaning).text =
+                dictionary.meaning;
+            itemView.findViewById<TextView>(R.id.tvWordFragmentSentence).text =
+                Utils.capitalize(dictionary.sentence);
         }
     }
 
@@ -68,9 +69,10 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
         );
 
         //textView
-        dialog.findViewById<TextView>(R.id.dialog_tv_title).text = word.word
+        dialog.findViewById<TextView>(R.id.dialog_tv_title).text = Utils.capitalize(word.word)
         dialog.findViewById<TextView>(R.id.dialog_tv_meaning).text = word.meaning
-        dialog.findViewById<TextView>(R.id.dialog_tv_sentence).text = word.sentence
+        dialog.findViewById<TextView>(R.id.dialog_tv_sentence).text =
+            Utils.capitalize(word.sentence)
 
         //button
         dialog.findViewById<Button>(R.id.dialog_delete_btn)
