@@ -5,11 +5,12 @@
     <color name="colorPrimaryLight">#0c7b93</color>
     <color name="colorAccent">#fe6845</color>
 
-
-    <color name="colorTextPrimary">@android:color/white</color>
-    <color name="colorScreenBackground">#fff3e0</color>
+    <!-- text color-->
+    <color name="colorBlackText">#252525</color>
+    <color name="colorSecondaryText">#999999</color>
     <color name="colorTextHint">#dadada</color>
-    <color name="colorText">#252525</color>
+
+    <!--misc-->
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorDangerRed">#D9534F</color>
 </resources>

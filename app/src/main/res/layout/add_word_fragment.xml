@@ -8,21 +8,21 @@
 
     <EditText
         android:id="@+id/etAddWordFragmentWord"
-        style="@style/edit_text_theme"
+        style="@style/edit_text_style"
         android:hint="@string/hint_word"
         android:importantForAutofill="no"
         android:inputType="textAutoComplete" />
 
     <EditText
         android:id="@+id/etAddWordFragmentMeaning"
-        style="@style/edit_text_theme"
+        style="@style/edit_text_style"
         android:hint="@string/hint_meaning"
         android:importantForAutofill="no"
         android:inputType="textAutoComplete" />
 
     <EditText
         android:id="@+id/etAddWordFragmentSentence"
-        style="@style/edit_text_theme"
+        style="@style/edit_text_style"
         android:hint="@string/hint_sentence"
         android:importantForAutofill="no"
         android:inputType="textAutoComplete" />

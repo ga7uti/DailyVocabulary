@@ -21,7 +21,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/size_16"
         android:layout_marginRight="@dimen/size_16"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="@dimen/size_8"
         android:src="@drawable/ic_plus" />
 
 </FrameLayout>

@@ -37,15 +37,17 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         holder.bind(mFilteredWords[position])
-        holder.itemView.setOnClickListener(View.OnClickListener {
-            showAlertDialog(mContext, mFilteredWords[position], position)
-        })
+//        holder.itemView.setOnClickListener(View.OnClickListener {
+//            showAlertDialog(mContext, mFilteredWords[position], position)
+//        })
 
     }
 
     class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(dictionary: Dictionary) {
-            itemView.findViewById<TextView>(R.id.textView_words).text = dictionary.word;
+            itemView.findViewById<TextView>(R.id.tvWordFragmentWord).text = dictionary.word;
+            itemView.findViewById<TextView>(R.id.tvWordFragmentMeaning).text = dictionary.meaning;
+            itemView.findViewById<TextView>(R.id.tvWordFragmentSentence).text = dictionary.sentence;
         }
     }
 

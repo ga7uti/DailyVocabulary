@@ -4,7 +4,10 @@
     <!--words fragment-->
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
-    <string name="search">Search</string>
+    <string name="search">Search </string>
+    <string name="meaning">Meaning :-</string>
+    <string name="sentence">Sentence :-</string>
+
     <string name="search_hint">Search Words</string>
 
     <!--add new word fragment-->
@@ -17,4 +20,5 @@
 
     <!-- misc-->
     <string name="cannot_edit">Not Editable</string>
+
 </resources>
