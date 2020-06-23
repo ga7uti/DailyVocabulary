@@ -11,6 +11,7 @@
     <color name="colorTextHint">#dadada</color>
 
     <!--misc-->
+    <color name="colorScreenBackground">#F0F7EE</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorDangerRed">#D9534F</color>
 </resources>

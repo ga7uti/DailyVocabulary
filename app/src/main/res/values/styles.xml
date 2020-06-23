@@ -16,12 +16,10 @@
     <style name="edit_text_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">
-            @android:style/TextAppearance.Large
-        </item>
-        <item name="android:background">@color/colorPrimaryLight</item>
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:textColorHint">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:background">@color/colorScreenBackground</item>
+        <item name="android:textColor">@color/colorBlackText</item>
+        <item name="android:textColorHint">@color/colorSecondaryText</item>
         <item name="android:layout_marginTop">@dimen/size_8</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:padding">@dimen/size_16</item>
@@ -30,7 +28,7 @@
     <style name="text_view_style_heading">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_margin">@dimen/size_4</item>
@@ -41,7 +39,7 @@
     <style name="text_view_style_content">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
         <item name="android:layout_marginStart">@dimen/size_4</item>
         <item name="android:layout_marginLeft">@dimen/size_4</item>
         <item name="android:layout_marginEnd">@dimen/size_4</item>

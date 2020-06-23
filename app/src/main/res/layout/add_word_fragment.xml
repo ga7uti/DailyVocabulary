@@ -6,21 +6,21 @@
     android:orientation="vertical"
     android:padding="24dp">
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etAddWordFragmentWord"
         style="@style/edit_text_style"
         android:hint="@string/hint_word"
         android:importantForAutofill="no"
         android:inputType="textAutoComplete" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etAddWordFragmentMeaning"
         style="@style/edit_text_style"
         android:hint="@string/hint_meaning"
         android:importantForAutofill="no"
         android:inputType="textAutoComplete" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etAddWordFragmentSentence"
         style="@style/edit_text_style"
         android:hint="@string/hint_sentence"

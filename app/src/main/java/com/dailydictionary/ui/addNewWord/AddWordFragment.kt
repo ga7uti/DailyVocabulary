@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -56,7 +57,7 @@ class AddWordFragment : Fragment() {
 
         //add btn click listener
         view.findViewById<Button>(R.id.btn_add_fragment_save)
-            .setOnClickListener(View.OnClickListener {
+            .setOnClickListener {
                 val word = validate()
                 if (!isEditable)
                     word?.let { it1 ->
@@ -70,7 +71,7 @@ class AddWordFragment : Fragment() {
                 Utils.hideKeyBoard(activity)
                 navigation.popBackStack(R.id.wordsFragment, true)
                 navigation.navigate(R.id.wordsFragment)
-            })
+            }
 
     }
 
@@ -85,9 +86,14 @@ class AddWordFragment : Fragment() {
 
     private fun setData(word: DictionaryModel) {
         etAddWordFragmentWord.inputType = InputType.TYPE_NULL
-        etAddWordFragmentWord.setOnClickListener(View.OnClickListener {
+        context?.let { ContextCompat.getColor(it,R.color.colorSecondaryText) }?.let {
+            etAddWordFragmentWord.setTextColor(
+                it
+            )
+        }
+        etAddWordFragmentWord.setOnClickListener {
             context?.let { it1 -> AlertUtils.showToast(it1, R.string.cannot_edit) }
-        })
+        }
         etAddWordFragmentWord.setText(word.word)
         etAddWordFragmentMeaning.setText(word.meaning)
         etAddWordFragmentSentence.setText(word.sentence)
