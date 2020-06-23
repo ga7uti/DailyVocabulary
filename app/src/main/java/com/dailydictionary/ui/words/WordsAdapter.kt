@@ -1,15 +1,8 @@
 package com.dailydictionary.ui.words
 
-import android.app.Dialog
 import android.content.Context
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
-import android.widget.Button
-import android.widget.Filter
-import android.widget.Filterable
-import android.widget.TextView
+import android.view.*
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.dailydictionary.R
 import com.dailydictionary.data.entity.Dictionary
@@ -38,7 +31,44 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         holder.bind(mFilteredWords[position])
+        holder.itemView.findViewById<ImageView>(R.id.icWordFragmentMenu)
+            .setOnClickListener(View.OnClickListener {
+                showPopupMenu(it, mFilteredWords[position], position)
+            })
+    }
 
+    private fun showPopupMenu(view: View, word: Dictionary, position: Int) {
+        val popupMenu = PopupMenu(mContext, view)
+        popupMenu.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_edit -> {
+                    listener.edit(word)
+                    true
+                }
+                R.id.action_delete -> {
+                    listener.delete(word)
+                    removeData(position)
+                    true
+                }
+                else -> false
+            }
+        }
+
+        popupMenu.inflate(R.menu.adapter_menu)
+        popupMenu.show()
+
+//        try {
+//            val fieldMPopup = PopupMenu::class.java.getDeclaredField("mPopup")
+//            fieldMPopup.isAccessible = true
+//            val mPopup = fieldMPopup.get(popupMenu)
+//            mPopup.javaClass
+//                .getDeclaredMethod("setForceShowIcon", Boolean::class.java)
+//                .invoke(mPopup, true)
+//        } catch (e: Exception){
+//            Log.e("Main", "Error showing menu icons.", e)
+//        } finally {
+//            popupMenu.show()
+//        }
     }
 
     class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -56,36 +86,6 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
         mAllWords = words;
         mFilteredWords = words.toMutableList()
         notifyDataSetChanged()
-    }
-
-    private fun showAlertDialog(mContext: Context, word: Dictionary, position: Int) {
-        val dialog = Dialog(mContext)
-        dialog.setContentView(R.layout.layout_alert_word)
-
-        //setting dialog window size
-        dialog.window?.setLayout(
-            WindowManager.LayoutParams.MATCH_PARENT,
-            WindowManager.LayoutParams.WRAP_CONTENT
-        );
-
-        //textView
-        dialog.findViewById<TextView>(R.id.dialog_tv_title).text = Utils.capitalize(word.word)
-        dialog.findViewById<TextView>(R.id.dialog_tv_meaning).text = word.meaning
-        dialog.findViewById<TextView>(R.id.dialog_tv_sentence).text =
-            Utils.capitalize(word.sentence)
-
-        //button
-        dialog.findViewById<Button>(R.id.dialog_delete_btn)
-            .setOnClickListener(View.OnClickListener {
-                listener.delete(word)
-                removeData(position)
-                dialog.dismiss()
-            })
-        dialog.findViewById<Button>(R.id.dialog_edit_btn).setOnClickListener(View.OnClickListener {
-            listener.edit(word)
-            dialog.dismiss()
-        })
-        dialog.show()
     }
 
     private fun removeData(position: Int) {
