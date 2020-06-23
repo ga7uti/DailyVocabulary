@@ -74,11 +74,11 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
     class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(dictionary: Dictionary) {
             itemView.findViewById<TextView>(R.id.tvWordFragmentWord).text =
-                Utils.capitalize(dictionary.word)
+                Utils.capitalize(dictionary.word.trim())
             itemView.findViewById<TextView>(R.id.tvWordFragmentMeaning).text =
-                dictionary.meaning;
+                itemView.context.getString(R.string.meaning_with_quotes, dictionary.meaning?.trim())
             itemView.findViewById<TextView>(R.id.tvWordFragmentSentence).text =
-                Utils.capitalize(dictionary.sentence);
+                Utils.capitalize(dictionary.sentence?.trim());
         }
     }
 

@@ -7,8 +7,8 @@
     <string name="search">Search </string>
     <string name="meaning">Meaning :-</string>
     <string name="sentence">Sentence :-</string>
-
     <string name="search_hint">Search Words</string>
+    <string name="meaning_with_quotes">\" %1$s \"</string>
 
     <!--add new word fragment-->
     <string name="add_new_word_fragment">AddWord</string>
@@ -19,6 +19,6 @@
     <string name="empty_not_saved">Word not saved because it is empty.</string>
 
     <!-- misc-->
-    <string name="cannot_edit">Not Editable</string>
+    <string name="cannot_edit">Cannot update word</string>
 
 </resources>
