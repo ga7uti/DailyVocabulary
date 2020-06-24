@@ -5,6 +5,7 @@
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="search">Search </string>
+    <string name="theme">Theme </string>
     <string name="meaning">Meaning :-</string>
     <string name="sentence">Sentence :-</string>
     <string name="search_hint">Search Words</string>
@@ -12,15 +13,16 @@
 
     <!--add new word fragment-->
     <string name="add_new_word_fragment">AddWord</string>
-    <string name="hint_word">Enter the word</string>
+    <string name="hint_word">Word</string>
     <string name="alert_hint_word">Please enter the word</string>
-    <string name="hint_meaning">Enter the meaning</string>
+    <string name="hint_meaning">Meaning</string>
     <string name="alert_hint_meaning">Please enter the meaning</string>
-    <string name="hint_sentence">Enter the sentence</string>
+    <string name="hint_sentence">Sentence</string>
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Word not saved because it is empty.</string>
 
     <!-- misc-->
     <string name="cannot_edit">Cannot update word</string>
+    <string name="choose_theme_text">Choose Theme</string>
 
 </resources>

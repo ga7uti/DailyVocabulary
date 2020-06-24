@@ -1,34 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etAddWordFragmentWord"
-        style="@style/edit_text_style"
-        android:hint="@string/hint_word"
-        android:importantForAutofill="no"
-        android:inputType="textAutoComplete" />
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etAddWordFragmentMeaning"
-        style="@style/edit_text_style"
-        android:hint="@string/hint_meaning"
-        android:importantForAutofill="no"
-        android:inputType="textAutoComplete" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etAddWordFragmentWord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_word" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etAddWordFragmentSentence"
-        style="@style/edit_text_style"
-        android:hint="@string/hint_sentence"
-        android:importantForAutofill="no"
-        android:inputType="textAutoComplete" />
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_8">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etAddWordFragmentMeaning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_meaning" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_8">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etAddWordFragmentSentence"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_sentence" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/btn_add_fragment_save"
-        style="@style/button_style"
-        android:text="@string/button_save" />
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_16"
+        android:text="@string/button_save"
+        android:textSize="@dimen/text_size_16"
+        app:cornerRadius="@dimen/size_16"
+        app:icon="@drawable/ic_done"
+        app:iconPadding="2dp" />
 </LinearLayout>
