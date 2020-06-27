@@ -18,7 +18,7 @@
     <string name="hint_meaning">Meaning</string>
     <string name="alert_hint_meaning">Please enter the meaning</string>
     <string name="hint_sentence">Sentence</string>
-    <string name="button_save">Save</string>
+    <string name="add_word">Add Word</string>
     <string name="empty_not_saved">Word not saved because it is empty.</string>
 
     <!-- misc-->
