@@ -17,7 +17,7 @@ import com.dailydictionary.data.DatabaseBuilder
 import com.dailydictionary.data.DatabaseHelperImpl
 import com.dailydictionary.data.entity.Dictionary
 import com.dailydictionary.data.model.DictionaryModel
-import com.dailydictionary.ui.activity.MainActivity
+import com.dailydictionary.ui.activity.HomeActivity
 import com.dailydictionary.utils.AlertUtils
 import kotlinx.android.synthetic.main.words_fragment.*
 
@@ -97,7 +97,8 @@ class WordsFragment : Fragment(), OnDialogClickListener, OnPassFilterQuery {
 
     override fun onAttach(activity: Activity) {
         super.onAttach(activity)
-        (activity as MainActivity).onPassFilterQuery = this
+       // (activity as MainActivity).onPassFilterQuery = this
+        (activity as HomeActivity).onPassFilterQuery = this
 
     }
 
