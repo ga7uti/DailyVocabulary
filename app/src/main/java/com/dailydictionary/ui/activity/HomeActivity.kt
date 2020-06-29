@@ -1,6 +1,7 @@
 package com.dailydictionary.ui.activity
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.inputmethod.EditorInfo
 import android.widget.SearchView
@@ -16,6 +17,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.dailydictionary.R
+import com.dailydictionary.pref.UserPref
 import com.dailydictionary.ui.words.OnPassFilterQuery
 import com.google.android.material.navigation.NavigationView
 
@@ -49,11 +51,18 @@ class HomeActivity : AppCompatActivity() {
         //change theme
         val scChangeTheme = navView.menu
             .findItem(R.id.nav_theme).actionView as Switch
+
+        scChangeTheme.isChecked = UserPref(this).darkMode == 1
+
         scChangeTheme.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
+            if (!isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                UserPref(this).darkMode = 0
+                drawerLayout.close()
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                UserPref(this).darkMode = 1
+                drawerLayout.close()
             }
         }
     }
