@@ -9,20 +9,11 @@
     tools:context="com.dailydictionary.ui.activity.SplashActivity">
 
     <ImageView
-        android:layout_width="@dimen/size_200"
-        android:layout_height="@dimen/size_200"
+        android:layout_width="@dimen/size_150"
+        android:layout_height="@dimen/size_150"
         android:layout_gravity="center"
+        android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher_foreground"
-        android:contentDescription="@string/app_name" />
+        android:src="@drawable/ic_book" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:textSize="@dimen/text_size_16"
-        android:layout_marginBottom="@dimen/size_24"
-        android:gravity="center"
-        android:text="@string/app_name"
-        android:textColor="@color/colorTextHint" />
 </FrameLayout>
