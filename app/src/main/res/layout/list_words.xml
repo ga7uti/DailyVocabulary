@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/size_16"
+    android:layout_marginTop="@dimen/size_16"
+    android:layout_marginEnd="@dimen/size_16"
     android:layout_marginBottom="@dimen/size_2"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    app:cardElevation="@dimen/size_5">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +18,7 @@
         android:layout_marginStart="@dimen/size_16"
         android:layout_marginTop="@dimen/size_16"
         android:layout_marginEnd="@dimen/size_16"
-        android:layout_marginBottom="@dimen/size_8"
+        android:layout_marginBottom="@dimen/size_16"
         android:orientation="horizontal"
         tools:ignore="UseCompoundDrawables">
 
@@ -26,20 +30,21 @@
 
             <TextView
                 android:id="@+id/tvWordFragmentWord"
-                style="@style/text_view_style_heading" />
+                style="@style/text_view_style_heading"
+                android:layout_marginStart="@dimen/size_8"
+                android:layout_marginTop="@dimen/size_8"
+                android:layout_marginEnd="@dimen/size_8" />
 
 
             <TextView
                 android:id="@+id/tvWordFragmentMeaning"
                 style="@style/text_view_style_content"
                 android:layout_marginStart="@dimen/size_24"
+                android:layout_marginEnd="@dimen/size_8"
+                android:layout_marginTop="@dimen/size_4"
+                android:layout_marginBottom="@dimen/size_8"
+                android:layout_marginRight="@dimen/size_8"
                 android:layout_marginLeft="@dimen/size_24" />
-
-            <TextView
-                android:id="@+id/tvWordFragmentSentence"
-                style="@style/text_view_style_content"
-                android:layout_marginTop="@dimen/size_8"
-                android:textStyle="italic" />
 
         </LinearLayout>
 
@@ -54,6 +59,4 @@
             android:src="@drawable/ic_menu" />
     </LinearLayout>
 
-
-    <View style="@style/view_divider" />
-</LinearLayout>
+</androidx.cardview.widget.CardView>

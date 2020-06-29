@@ -1,5 +1,6 @@
 package com.dailydictionary.ui.words
 
+import android.app.Dialog
 import android.content.Context
 import android.view.*
 import android.widget.*
@@ -35,6 +36,10 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
             .setOnClickListener(View.OnClickListener {
                 showPopupMenu(it, mFilteredWords[position], position)
             })
+
+        holder.itemView.setOnClickListener {
+            showAlertDialog(mContext, mFilteredWords[position])
+        }
     }
 
     private fun showPopupMenu(view: View, word: Dictionary, position: Int) {
@@ -56,19 +61,24 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
 
         popupMenu.inflate(R.menu.adapter_menu)
         popupMenu.show()
+    }
 
-//        try {
-//            val fieldMPopup = PopupMenu::class.java.getDeclaredField("mPopup")
-//            fieldMPopup.isAccessible = true
-//            val mPopup = fieldMPopup.get(popupMenu)
-//            mPopup.javaClass
-//                .getDeclaredMethod("setForceShowIcon", Boolean::class.java)
-//                .invoke(mPopup, true)
-//        } catch (e: Exception){
-//            Log.e("Main", "Error showing menu icons.", e)
-//        } finally {
-//            popupMenu.show()
-//        }
+    private fun showAlertDialog(mContext: Context, word: Dictionary) {
+        val dialog = Dialog(mContext)
+        dialog.setContentView(R.layout.layout_alert_word)
+
+        //setting dialog window size
+        dialog.window?.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        );
+
+        //textView
+        dialog.findViewById<TextView>(R.id.dialog_tv_title).text = Utils.capitalize(word.word)
+        dialog.findViewById<TextView>(R.id.dialog_tv_meaning).text = word.meaning
+        dialog.findViewById<TextView>(R.id.dialog_tv_sentence).text = Utils.capitalize(word.sentence)
+
+        dialog.show()
     }
 
     class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -77,8 +87,6 @@ class WordsAdapter(private var listener: OnDialogClickListener) :
                 Utils.capitalize(dictionary.word.trim())
             itemView.findViewById<TextView>(R.id.tvWordFragmentMeaning).text =
                 itemView.context.getString(R.string.meaning_with_quotes, dictionary.meaning?.trim())
-            itemView.findViewById<TextView>(R.id.tvWordFragmentSentence).text =
-                dictionary.sentence?.let { Utils.capitalize(it.trim()) }
         }
     }
 
