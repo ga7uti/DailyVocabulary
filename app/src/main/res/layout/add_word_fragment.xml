@@ -54,5 +54,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_16"
         android:text="@string/add_word"
-        app:backgroundTint="@color/colorPrimary"/>
+        android:textColor="@color/colorWhite"
+        app:backgroundTint="@color/colorBtn"/>
 </LinearLayout>

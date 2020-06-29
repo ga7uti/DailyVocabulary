@@ -6,8 +6,8 @@
     <color name="colorAccent">#e43f5a</color>
 
     <!-- text color-->
-    <color name="colorHeadingText">#212121</color>
-    <color name="colorSecondaryText">#616161</color>
+    <color name="colorHeadingText">#ffffff</color>
+    <color name="colorSecondaryText">#ffffff</color>
     <color name="colorTextHint">#dadada</color>
 
     <!--misc-->

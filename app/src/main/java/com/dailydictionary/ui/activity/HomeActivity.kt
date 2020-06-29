@@ -3,12 +3,10 @@ package com.dailydictionary.ui.activity
 import android.os.Bundle
 import android.view.Menu
 import android.view.inputmethod.EditorInfo
-import android.widget.CompoundButton
 import android.widget.SearchView
 import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.SwitchCompat
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -20,7 +18,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.dailydictionary.R
 import com.dailydictionary.ui.words.OnPassFilterQuery
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.nav_header_main.*
 
 class HomeActivity : AppCompatActivity() {
 
