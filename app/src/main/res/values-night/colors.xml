@@ -8,12 +8,14 @@
     <!-- text color-->
     <color name="colorHeadingText">#ffffff</color>
     <color name="colorSecondaryText">#ffffff</color>
-    <color name="colorTextHint">#dadada</color>
+    <color name="colorTextHint">#ffffff</color>
 
-    <!--misc-->
+    <!--layout-->
     <color name="colorBtn">#212121</color>
     <color name="colorScreenBackground">#1c1c1c</color>
     <color name="colorCardBackground">#212121</color>
+
+    <!--misc-->
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorDangerRed">#D9534F</color>
 </resources>

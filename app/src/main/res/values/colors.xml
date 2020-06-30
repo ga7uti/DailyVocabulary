@@ -10,11 +10,12 @@
     <color name="colorSecondaryText">#616161</color>
     <color name="colorTextHint">#dadada</color>
 
-    <!--misc-->
+    <!--layout-->
     <color name="colorBtn">#216583</color>
     <color name="colorScreenBackground">#FFFFFF</color>
     <color name="colorCardBackground">#ffffff</color>
-    <color name="colorToolbar">#FFFFFF</color>
+
+    <!--misc-->
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorDangerRed">#D9534F</color>
 </resources>
