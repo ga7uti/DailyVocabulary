@@ -9,6 +9,7 @@ import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -20,19 +21,21 @@ import com.dailydictionary.R
 import com.dailydictionary.pref.UserPref
 import com.dailydictionary.ui.words.OnPassFilterQuery
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.app_bar_main.*
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     lateinit var onPassFilterQuery: OnPassFilterQuery
     private lateinit var navController: NavController
+    private lateinit var toolbar: Toolbar
 
     private var menu: Menu? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
@@ -89,8 +92,13 @@ class HomeActivity : AppCompatActivity() {
 
     private val listener =
         NavController.OnDestinationChangedListener { _, navDestination, _ ->
-            menu?.findItem(R.id.action_search)?.isVisible =
-                navDestination.id != R.id.addWordFragment
+            if (navDestination.id != R.id.wordsFragment) {
+                menu?.findItem(R.id.action_search)?.isVisible = false
+                toolbarLogoLayout.isVisible = false
+            }else{
+                menu?.findItem(R.id.action_search)?.isVisible = true
+                toolbarLogoLayout.isVisible = true
+            }
         }
 
     override fun onSupportNavigateUp(): Boolean {
