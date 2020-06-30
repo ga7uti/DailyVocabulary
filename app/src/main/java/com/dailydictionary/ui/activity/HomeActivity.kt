@@ -3,6 +3,7 @@ package com.dailydictionary.ui.activity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.SearchView
 import android.widget.Switch
@@ -94,10 +95,10 @@ class HomeActivity : AppCompatActivity() {
         NavController.OnDestinationChangedListener { _, navDestination, _ ->
             if (navDestination.id != R.id.wordsFragment) {
                 menu?.findItem(R.id.action_search)?.isVisible = false
-                toolbarLogoLayout.isVisible = false
+                toolbarLogoLayout.visibility = View.GONE
             }else{
                 menu?.findItem(R.id.action_search)?.isVisible = true
-                toolbarLogoLayout.isVisible = true
+                toolbarLogoLayout.visibility = View.VISIBLE
             }
         }
 

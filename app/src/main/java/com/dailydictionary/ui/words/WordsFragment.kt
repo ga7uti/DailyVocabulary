@@ -1,10 +1,12 @@
 package com.dailydictionary.ui.words
 
 import android.app.Activity
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -68,7 +70,8 @@ class WordsFragment : Fragment(), OnDialogClickListener, OnPassFilterQuery {
             if (it.isNotEmpty()) {
                 adapter.setAllWords(it)
             } else {
-                context?.let { it1 -> AlertUtils.showToast(it1, "No data added") }
+                recyclerview.visibility = View.GONE
+                tvNoData.visibility = View.VISIBLE
             }
         })
     }
@@ -97,7 +100,7 @@ class WordsFragment : Fragment(), OnDialogClickListener, OnPassFilterQuery {
 
     override fun onAttach(activity: Activity) {
         super.onAttach(activity)
-       // (activity as MainActivity).onPassFilterQuery = this
+        // (activity as MainActivity).onPassFilterQuery = this
         (activity as HomeActivity).onPassFilterQuery = this
 
     }
