@@ -7,8 +7,8 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/size_16"
     android:layout_marginTop="@dimen/size_16"
+    app:cardBackgroundColor="@color/colorCardBackground"
     android:layout_marginEnd="@dimen/size_16"
-    android:layout_marginBottom="@dimen/size_2"
     android:orientation="vertical"
     app:cardElevation="@dimen/size_5">
 

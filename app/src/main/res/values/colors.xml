@@ -12,7 +12,9 @@
 
     <!--misc-->
     <color name="colorBtn">#216583</color>
-    <color name="colorScreenBackground">#F0F7EE</color>
+    <color name="colorScreenBackground">#FFFFFF</color>
+    <color name="colorCardBackground">#ffffff</color>
+    <color name="colorToolbar">#FFFFFF</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorDangerRed">#D9534F</color>
 </resources>

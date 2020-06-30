@@ -10,8 +10,7 @@
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_2"
-        android:layout_marginBottom="@dimen/size_2"
+        android:layout_marginBottom="@dimen/size_16"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/list_words" />
 
