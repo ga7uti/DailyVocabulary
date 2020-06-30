@@ -1,7 +1,6 @@
 package com.dailydictionary.ui.activity
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -10,7 +9,6 @@ import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -21,6 +19,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.dailydictionary.R
 import com.dailydictionary.pref.UserPref
 import com.dailydictionary.ui.words.OnPassFilterQuery
+import com.dailydictionary.utils.AlertUtils
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.app_bar_main.*
 
@@ -30,6 +29,7 @@ class HomeActivity : AppCompatActivity() {
     lateinit var onPassFilterQuery: OnPassFilterQuery
     private lateinit var navController: NavController
     private lateinit var toolbar: Toolbar
+    private var backPressedTime: Long = 0
 
     private var menu: Menu? = null
 
@@ -96,7 +96,7 @@ class HomeActivity : AppCompatActivity() {
             if (navDestination.id != R.id.wordsFragment) {
                 menu?.findItem(R.id.action_search)?.isVisible = false
                 toolbarLogoLayout.visibility = View.GONE
-            }else{
+            } else {
                 menu?.findItem(R.id.action_search)?.isVisible = true
                 toolbarLogoLayout.visibility = View.VISIBLE
             }
@@ -115,5 +115,15 @@ class HomeActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         navController.removeOnDestinationChangedListener(listener)
+    }
+
+    override fun onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed();
+            return;
+        } else {
+            AlertUtils.showToast(this, R.string.press_again_to_exit)
+        }
+        backPressedTime = System.currentTimeMillis();
     }
 }
