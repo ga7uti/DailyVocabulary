@@ -1,5 +1,5 @@
 # DailyVocabulary
-Create your own dictionary
+Create your own dictionary \n
 #Created using 
   1. Kotlin
   2. MVVM
